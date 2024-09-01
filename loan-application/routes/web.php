@@ -7,9 +7,9 @@ use App\Http\Controllers\LoanRequestFormController;
     return view('welcome');
 });*/
 
+Route::get('/',[LoanRequestFormController::class,'dashboard']);
 Route::prefix('RequestForm')->group(function(){
-    Route::get('/dashboard',[LoanRequestFormController::class,'dashboard']);
-    Route::get('/RequestForm',[LoanRequestFormController::class,'RequestForm']);
+    Route::get('/createRequestForm',[LoanRequestFormController::class,'RequestForm']);
     Route::post('/createForm',[LoanRequestFormController::class,'createForm']);
     Route::get('/editForm/{id}',[LoanRequestFormController::class,'editForm']);
     Route::post('/updateLoanForm', [LoanRequestFormController::class,'updateLoanForm']);

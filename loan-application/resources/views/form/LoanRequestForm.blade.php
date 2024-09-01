@@ -135,6 +135,7 @@
 		</div>
 		<div class="container d-flex align-items-center justify-content-center">
 			<input type="submit"  class="btn btn-primary" value="Register">
+			<a href="/" class="btn btn-danger">Cancel </a>
 		</div>
 	</form>
 	

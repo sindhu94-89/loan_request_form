@@ -27,7 +27,9 @@ class LoanRequestFormController extends Controller
         $validated = $request->validated();
         $result = $this->LoanRequestFormModel->createLoanForm($request->all());
         if($result['status_code']==200){
-            return redirect('/RequestForm/dashboard');
+            return redirect('/')->with('success','Application created successfully');
+        }else{
+            return redirect('/')->with('failed','Unable to create application');
         }
         //return view('form.LoanRequestForm')->with(['result' => $result]);
     }
@@ -39,10 +41,18 @@ class LoanRequestFormController extends Controller
     public function updateLoanForm(LoanFormRequest $request){
         $validated = $request->validated();
         $result = $this->LoanRequestFormModel->updateFormPost($request);
-        //return redirect('/RequestForm/dashboard');
+        if($result['status_code']==200){
+            return redirect('/')->with('success','Application updated successfully');
+        }else{
+            return redirect('/')->with('failed','Unable to update application');
+        }
     }
     public function deleteForm($id){
         $result = $this->LoanRequestFormModel->deleteactionForm($id);
-        return redirect('/RequestForm/dashboard');
+        if($result['status_code']==200){
+            return redirect('/')->with('success','Application deleted successfully');
+        }else{
+            return redirect('/')->with('failed','Unable to delete application');
+        }
     }
 }

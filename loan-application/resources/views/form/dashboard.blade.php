@@ -8,8 +8,32 @@
 	<title>Dashboard</title>
 </head>
 <body>
+	@if (session('success'))
+		<div class="row">
+		    <div class="col-sm-12">
+		        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+		            {{ session('success') }}
+		                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		                    <span aria-hidden="true">&times;</span>
+		                </button>
+		        </div>
+		    </div>
+		</div>
+	@endif
+	@if (session('failed'))
+		<div class="row">
+		    <div class="col-sm-12">
+		        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+		            {{ session('failed') }}
+		                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		                    <span aria-hidden="true">&times;</span>
+		                </button>
+		        </div>
+		    </div>
+		</div>
+	@endif
 	<h4 class="text-center"><b>Loan Application</b></h4>
-	<a href="{{url('/RequestForm/RequestForm')}}"> <button type="button" class="btn btn-primary float-left">Create New Loan Request Form</button></a><br/><br/>
+	<a href="{{url('/RequestForm/createRequestForm')}}"> <button type="button" class="btn btn-primary float-left">Create New Loan Request Form</button></a><br/><br/>
 	<table class="table">
 		<thead>
 			<th>Name</th>
@@ -25,7 +49,7 @@
 				    <td>{{ $data->dob }}</td>
 				    <td>{{ $data->email }}</td>
 				    <td><a href="/RequestForm/editForm/{{$data->id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
-				    <td><a href="/RequestForm/deleteForm/{{$data->id}}"> <button type="button" class="btn btn-danger">Delete</button></a></td>
+				    <td><a href="/RequestForm/deleteForm/{{$data->id}}" class="btn btn-danger"> Delete</a></td>
 				</tr>
 			@endforeach
 		</tbody>
