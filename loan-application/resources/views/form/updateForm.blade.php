@@ -9,19 +9,19 @@
 </head>
 <body>
 <main class="py-4 container">
-	<form method="post" name="RequestForm" action="/RequestForm/createForm">
-		@csrf
+	<form method="post" name="RequestForm" action="/RequestForm/updateLoanForm">
+		<input type = "hidden" name = "id" value="{{$result['id']}}">
 		<div class="form-row row">
 			<div class="form-group col-md-6">
 				<label for="desired_loan_amount">Desired Loan Amount INR </label>
-				<input type="number" name = "desired_loan_amount" min="0" value="{{old('desired_loan_amount')}}" class="form-control" required>
+				<input type="number" name = "desired_loan_amount" min="0" value="{{$result['desired_loan_amount']}}" class="form-control" required>
 				@error('desired_loan_amount')<div class="alert alert-danger">{{ $message }}</div>@enderror
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="annual_income">Annual Income INR</label>
-				<input type="number" name = "annual_income" min="0" value="{{old('annual_income')}}" class="form-control" required>
-				@error('annual_income')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				<input type="number" name = "annual_income" min="0" value="{{$result['annual_income']}}" class="form-control" required>
+				
 			</div>
 		</div>
 		<div class="form-group">
@@ -50,26 +50,26 @@
 				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="other">
 				<label class="custom-check-label">Other</label>
 			</div>
-			@error('loan_used_for')<div class="alert alert-danger">{{ $message }}</div>@enderror
+			
 		</div>
 		<h4><b>Contact Information</b></h4>
 		<div class="form-row row">
 			<div class="form-group col-md-6">
 				<label for="first_name">First Name </label>
-				<input type="text" name = "first_name" value="{{old('first_name')}}" class="form-control" required>
+				<input type="text" name = "first_name" value="{{$result['first_name']}}" class="form-control" required>
 				@error('first_name')<div class="alert alert-warning">{{ $message }}</div>@enderror
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="last_name">Last Name</label>
-				<input type="text" name = "last_name" value="{{old('last_name')}}" class="form-control">
+				<input type="text" name = "last_name" value="{{$result['last_name']}}" class="form-control">
 				
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="dob">Date of Birth</label>
-			<input type="date" class="form-control" name = "dob" value="{{old('dob')}}" required>
-			@error('dob')<div class="alert alert-danger">{{ $message }}</div>@enderror
+			<input type="date" class="form-control" name = "dob" value="{{$result['dob']}}" required>
+			
 		</div>
 		<div class="form-group">
 			<label for="marital_status" class="form-label">Martial Status</label><br/>
@@ -85,56 +85,55 @@
 				<input type ="radio" name="marital_status" id="marital_status"  class="form-check-input" @checked(old('marital_status')) value="other">
 				<label class="custom-check-label">Other</label>
 			</div>
-			@error('marital_status')<div class="alert alert-danger">{{ $message }}</div>@enderror
+			
 		</div>
 		<div class="form-row row">
 			<div class="form-group col-md-6">
 				<label for="email">Email</label>
-				<input type="email" class="form-control" name = "email" value="{{old('email')}}" required>
-				@error('email')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				<input type="email" class="form-control" name = "email" value="{{$result['email']}}" required>
+				
 			</div>
 			<div class="form-group col-md-6">
 				<label for="phone_number">Phone Number </label>
-				<input type="text" class="form-control" name = "phone_number" value="{{old('phone_number')}}" required>
-				@error('phone_number')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				<input type="text" class="form-control" name = "phone_number" value="{{$result['phone_number']}}" required>
+				
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="address">Address </label>
-			<textarea class="form-control" id="address" name = "address" value="{{old('address')}}" required></textarea>
-			@error('address')<div class="alert alert-danger">{{ $message }}</div>@enderror
+			<textarea class="form-control" id="address" name = "address" required>{{$result['address']}}</textarea>
+			
 		</div>
 		<h4><b>Employment Information</b></h4>
 		<div class="form-row row">
 			<div class="form-group col-md-6">
 				<label for="occupation">Occupation</label>
-				<input type="text" name = "occupation" value="{{old('occupation')}}" class="form-control" required>
+				<input type="text" name = "occupation" value="{{$result['occupation']}}" class="form-control" required>
 				
 			</div>
 			<div class="form-group col-md-6">
 				<label for="down_payment_amount">Down Payment Amount</label>
-				<input type="number" name = "down_payment_amount" min="0" value="{{old('down_payment_amount')}}" class="form-control" required>
-				@error('down_payment_amount')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				<input type="number" name = "down_payment_amount" min="0" value="{{$result['down_payment_amount']}}" class="form-control" required>
+				
 			</div>
 		</div>
 		<h4><b>Bank References</b></h4>
 		<div class="form-row row">
 			<div class="form-group col-md-6">
 				<label for="institution_name">Institution Name</label>
-				<input type="text" name = "institution_name" value="{{old('institution_name')}}" class="form-control" required>
-				@error('institution_name')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				<input type="text" name = "institution_name" value="{{$result['institution_name']}}" class="form-control" required>
+				
 			</div>
 			<div class="form-group col-md-6">
 				<label for="saving_account_number">Saving Account#</label>
-				<input type="text" name = "saving_account_number" value="{{old('saving_account_number')}}" class="form-control" required>
-				@error('saving_account_number')<div class="alert alert-danger">{{ $message }}</div>@enderror
+				<input type="text" name = "saving_account_number" value="{{$result['saving_account_number']}}" class="form-control" required>
+				
 			</div>
 		</div>
-		<div class="form-group">
-			<input type="checkbox" name="agree_information" value="yes" required><label>  &nbsp;I hereby agree that the information given is true, accurate and complete as of the date of this application submission.</label><br/>
-		</div>
+		@csrf
+		
 		<div class="container d-flex align-items-center justify-content-center">
-			<input type="submit"  class="btn btn-primary" value="Register">
+			<input type="submit"  class="btn btn-primary" value="Update">
 		</div>
 	</form>
 	

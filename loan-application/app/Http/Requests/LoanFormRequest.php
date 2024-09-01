@@ -24,7 +24,6 @@ class LoanFormRequest extends FormRequest
         return [
             'first_name' => 'required|regex:/^[A-Z]+$/i|min:4',
             'dob' => 'required|before:-21 years',
-            'gender' => 'required|in:single,married,other',
             'email' => 'required|email',
             'phone_number' => 'required|digits:10',
             'address' => 'required',
@@ -37,6 +36,24 @@ class LoanFormRequest extends FormRequest
             'saving_account_number' => 'required',
             'agree_information' => 'required',
             
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'first_name.required' => 'first_name is required!',
+            'dob.required' => 'dob is required!',
+            'email.required' => 'email is required!',
+            'phone_number.required' => 'phone_number is required!',
+            'address.required' => 'address is required!',
+            'occupation.required' => 'occupation is required!',
+            'desired_loan_amount.required' => 'desired_loan_amount is required!',
+            'annual_income.required' => 'annual_income is required!',
+            'loan_used_for.required' => 'loan_used_for is required!',
+            'down_payment_amount.required' => 'down_payment_amount is required!',
+            'institution_name.required' => 'institution_name is required!',
+            'saving_account_number.required' => 'saving_account_number is required!',
+            'agree_information.required' => 'agree_information is required!',
         ];
     }
 }
