@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	<title>Loan Request Form</title>
 	<h2 class="text-center"><b>Loan Request Form</b></h2>
 </head>
 <body>
 <main class="py-4 container">
-	<form name="request_form">
+	<form method="post" name="RequestForm" action="/RequestForm/createForm">
+		@csrf
 		<div class="form-row row">
 			<div class="form-group col-md-6">
 				<label for="desired_loan_amount">Desired Loan Amount INR </label>
 				<input type="number" name = "desired_loan_amount" min="0" value="{{old('desired_loan_amount')}}" class="form-control" required>
+				@error('desired_loan_amount')<div class="alert alert-danger">{{ $message }}</div>@enderror
 			</div>
 
 			<div class="form-group col-md-6">
@@ -25,7 +26,7 @@
 		</div>
 		<div class="form-group">
 			<label for="loan_used_for">Loan will be used for</label>
-			<div class="custom-control custom-radio custom-control-inline">
+			<div class="custom-control customLoanFormRequest-radio custom-control-inline">
 				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" class="custom-control-input" value="business_launching" required>
 				<label class="form-check-label">Business Launching</label>
 			</div>
@@ -56,7 +57,7 @@
 			<div class="form-group col-md-6">
 				<label for="first_name">First Name </label>
 				<input type="text" name = "first_name" value="{{old('first_name')}}" class="form-control" required>
-				
+				@error('first_name')<div class="alert alert-warning">{{ $message }}</div>@enderror
 			</div>
 
 			<div class="form-group col-md-6">
@@ -136,6 +137,7 @@
 			<input type="submit"  class="btn btn-primary" value="Register">
 		</div>
 	</form>
+	
 </main>
 </body>
 </html>

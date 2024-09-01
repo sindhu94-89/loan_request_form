@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class LoanRequestFormModel extends Model
 {
     use HasFactory;
+    
+    public function createLoanForm($request){
+        dd($result);
+        return $result;
+    }
 }
