@@ -49,7 +49,7 @@
 				    <td>{{ $data->dob }}</td>
 				    <td>{{ $data->email }}</td>
 				    <td><a href="/RequestForm/editForm/{{$data->id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
-				    <td><a href="/RequestForm/deleteForm/{{$data->id}}" class="btn btn-danger"> Delete</a></td>
+				    <td><a href="/RequestForm/deleteForm/{{$data->id}}" class="btn btn-danger" onclick="return confirm('Do you wanted to delete the application?');"> Delete</a></td>
 				</tr>
 			@endforeach
 		</tbody>

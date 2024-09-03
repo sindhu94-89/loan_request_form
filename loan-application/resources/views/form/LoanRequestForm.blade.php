@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	<title>Loan Request Form</title>
-	<h2 class="text-center"><b>Loan Request Form</b></h2>
-</head>
-<body>
-<main class="py-4 container">
+@include('layouts.header')
 	<form method="post" name="RequestForm" action="/RequestForm/createForm">
 		@csrf
 		<div class="form-row row">
@@ -27,27 +17,27 @@
 		<div class="form-group">
 			<label for="loan_used_for">Loan will be used for</label>
 			<div class="custom-control customLoanFormRequest-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('business_launching')) value="business_launching" required>
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="business_launching" {{ old('loan_used_for') == 'business_launching' ? 'checked' : ''}} required>
 				<label class="form-check-label">Business Launching</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('house_buying')) value="house_buying">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="house_buying" {{ old('loan_used_for') == 'house_buying' ? 'checked' : ''}}>
 				<label class="form-check-label">House Buying</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('home_improvement')) value="home_improvement">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="home_improvement" {{ old('loan_used_for') == 'home_improvement' ? 'checked' : ''}}>
 				<label class="form-check-label">Home Improvement</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('investment')) value="investment">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="investment" {{ old('loan_used_for') == 'investment' ? 'checked' : ''}}>
 				<label class="form-check-label">Investment</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('education')) value="education">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="education" {{ old('loan_used_for') == 'education' ? 'checked' : ''}}>
 				<label class="custom-check-label">Education</lable>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('other')) value="other">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="other" {{ old('loan_used_for') == 'other' ? 'checked' : ''}}>
 				<label class="custom-check-label">Other</label>
 			</div>
 			@error('loan_used_for')<div class="alert alert-danger">{{ $message }}</div>@enderror
@@ -74,15 +64,15 @@
 		<div class="form-group">
 			<label for="marital_status" class="form-label">Martial Status</label><br/>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input type ="radio" name="marital_status" id="marital_status"  class="form-check-input" @checked(old('marital_status')) value="single" required>
+				<input type ="radio" name="marital_status" id="marital_status"  class="form-check-input" value="single" {{ old('marital_status') == 'single' ? 'checked' : ''}} required>
 				<label class="custom-check-label">Single</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input type ="radio" name="marital_status" id="marital_status"  class="form-check-input" @checked(old('marital_status')) value="married">
+				<input type ="radio" name="marital_status" id="marital_status"  class="form-check-input" value="married" value="married" {{ old('marital_status') == 'married' ? 'checked' : ''}}>
 				<label class="custom-check-label">Married</lable>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input type ="radio" name="marital_status" id="marital_status"  class="form-check-input" @checked(old('marital_status')) value="other">
+				<input type ="radio" name="marital_status" id="marital_status"  class="form-check-input" @checked(old('marital_status')) value="other" {{ old('marital_status') == 'other' ? 'checked' : ''}}>
 				<label class="custom-check-label">Other</label>
 			</div>
 			@error('marital_status')<div class="alert alert-danger">{{ $message }}</div>@enderror
@@ -101,7 +91,7 @@
 		</div>
 		<div class="form-group">
 			<label for="address">Address </label>
-			<textarea class="form-control" id="address" name = "address" value="{{old('address')}}" required></textarea>
+			<textarea class="form-control" id="address" name = "address" required>{{old('address')}}</textarea>
 			@error('address')<div class="alert alert-danger">{{ $message }}</div>@enderror
 		</div>
 		<h4><b>Employment Information</b></h4>
@@ -133,9 +123,11 @@
 		<div class="form-group">
 			<input type="checkbox" name="agree_information" value="yes" required><label>  &nbsp;I hereby agree that the information given is true, accurate and complete as of the date of this application submission.</label><br/>
 		</div>
-		<div class="container d-flex align-items-center justify-content-center">
-			<input type="submit"  class="btn btn-primary" value="Register">
-			<a href="/" class="btn btn-danger">Cancel </a>
+		<div class="">
+			<div class="form-group">
+				<input type="submit"  class="btn btn-success float-right" value="Submit Form">
+				<a href="/" class="btn btn-primary">Cancel</a>
+			</div>
 		</div>
 	</form>
 	
