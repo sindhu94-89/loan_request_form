@@ -27,27 +27,27 @@
 		<div class="form-group">
 			<label for="loan_used_for">Loan will be used for</label>
 			<div class="custom-control customLoanFormRequest-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" class="custom-control-input" value="business_launching" required>
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('business_launching')) value="business_launching" required>
 				<label class="form-check-label">Business Launching</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for"  class="custom-control-input" value="house_buying">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('house_buying')) value="house_buying">
 				<label class="form-check-label">House Buying</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="home_improvement">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('home_improvement')) value="home_improvement">
 				<label class="form-check-label">Home Improvement</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="investment">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('investment')) value="investment">
 				<label class="form-check-label">Investment</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="education">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('education')) value="education">
 				<label class="custom-check-label">Education</lable>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" value="other">
+				<input class="form-check-input" type ="radio" name="loan_used_for" id="loan_used_for" @checked(old('other')) value="other">
 				<label class="custom-check-label">Other</label>
 			</div>
 			@error('loan_used_for')<div class="alert alert-danger">{{ $message }}</div>@enderror

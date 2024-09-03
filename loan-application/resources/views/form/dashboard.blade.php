@@ -45,7 +45,7 @@
 		<tbody>
 			@foreach($result as $data)
 				<tr>
-					<td>{{ $data->first_name }}</td>
+					<td>{{ $data->first_name }} {{ $data->last_name }}</td>
 				    <td>{{ $data->dob }}</td>
 				    <td>{{ $data->email }}</td>
 				    <td><a href="/RequestForm/editForm/{{$data->id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>

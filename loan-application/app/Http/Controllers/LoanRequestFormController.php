@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\LoanFormRequest;
+use App\Http\Requests\LoanFormUpdateRequest;
 use App\Models\LoanRequestFormModel;
 use App\Models\loanrequestform;
 
@@ -38,7 +39,7 @@ class LoanRequestFormController extends Controller
         return view('form.updateForm')->with(['result' => $result]);
         
     }
-    public function updateLoanForm(LoanFormRequest $request){
+    public function updateLoanForm(LoanFormUpdateRequest $request){
         $validated = $request->validated();
         $result = $this->LoanRequestFormModel->updateFormPost($request);
         if($result['status_code']==200){

@@ -12,7 +12,5 @@ class getFormDetail extends Model
     public function getForm(){
         $result = loanrequestform::select('first_name','last_name','dob', 'email')->get();
         return $result;
-        /*$result = momModel::all();*/
-        print_r($restult);
     }
 }

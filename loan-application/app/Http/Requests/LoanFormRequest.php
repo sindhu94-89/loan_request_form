@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\loanrequestform;
+
 
 class LoanFormRequest extends FormRequest
 {
@@ -24,7 +26,7 @@ class LoanFormRequest extends FormRequest
         return [
             'first_name' => 'required|regex:/^[A-Z]+$/i|min:4',
             'dob' => 'required|before:-21 years',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:loanrequestform',
             'phone_number' => 'required|digits:10',
             'address' => 'required',
             'occupation' => 'required',
